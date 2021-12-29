@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  db-cluster1:
+    image: "cassandra:4.0.1"
+    ports:
+      - "9160:9160"
+  db-cluster2:
+    image: "cassandra:4.0.1"
+    links:
+      - "db-cluster1"
+  kafka:
+    image: "bitnami/kafka:2.8.1"
+    ports:
+      - "9092:9092"
+  elastic:
+    image: "elasticsearch:7.16.2"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
